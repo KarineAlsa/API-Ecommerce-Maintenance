@@ -1,16 +1,19 @@
 import mysql from "mysql2/promise";
+import dotenv from 'dotenv'
 
+dotenv.config()
 
 const config = {
-  host: "localhost",
-  database: "prueba",
-  user: "root",
-  password: "Kataraydione02",
-  waitForConnections: true,
+  host: process.env.HOST,
+  database: process.env.DATABASE_NAME,
+  user: process.env.DATABASE_USER,
+  password: process.env.DATABASE_PASSWORD,
+  waitForConnections: true
 };
 
 
 const connection_pool = mysql.createPool(config);
+
 
 export default async function query(query_sentence: string, params: any[]) {
   try {
