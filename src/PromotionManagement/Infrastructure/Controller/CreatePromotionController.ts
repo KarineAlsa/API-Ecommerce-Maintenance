@@ -7,7 +7,8 @@ export default class CreatePromotionController {
     constructor(readonly useCase:CreatePromotionUseCase){}
 
     async run(request:Request,response:Response) {
-
+        const name = request.body.name
+        const description = request.body.description
         const type = request.body.type
         const value = request.body.value
         const code = request.body.code
@@ -17,6 +18,8 @@ export default class CreatePromotionController {
         try {
             
             let promotion = await this.useCase.run({
+                name: name,
+                description: description,
                 type: type,
                 value: value,
                 code: code,

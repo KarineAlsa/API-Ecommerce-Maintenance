@@ -4,9 +4,9 @@ import query from "../../../Database/mysql";
 
 export default class PromotionMySQLRepository implements PromotionInterface {
     async createPromotion(promotion: Promotion): Promise<any> {
-        const sql = "INSERT INTO promotions (type, value,code) VALUES (?,?,?)";
+        const sql = "INSERT INTO promotions (name, description, type, value,code) VALUES (?,?,?)";
         
-        const params: any[] = [promotion.type, promotion.value,promotion.code];
+        const params: any[] = [promotion.name,promotion.description,promotion.type, promotion.value,promotion.code];
         try {
             const [result]: any = await query(sql, params);
 
@@ -29,7 +29,7 @@ export default class PromotionMySQLRepository implements PromotionInterface {
             const [[result]]: any = await query(sql, params);
             
             if (result){
-                return {id:result.id,type:result.type,value: result.value, code:result.code};
+                return {id:result.id,name: result.name, description: result.description,type:result.type,value: result.value, code:result.code};
             }
             else {
                 return false;
@@ -61,7 +61,7 @@ export default class PromotionMySQLRepository implements PromotionInterface {
             return result
         }
         else {
-            return "No hay productos";
+            return "No hay promociones";
         }
         }
         catch (error) {

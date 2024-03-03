@@ -7,7 +7,7 @@ import { getAllController } from "../Dependencies";
 
 const providerRouter = express.Router();
 
-providerRouter.post("/add",createProviderController.run.bind(createProviderController));
+providerRouter.post("/",createProviderController.run.bind(createProviderController));
 providerRouter.delete("/:id",deleteController.run.bind(deleteController));
 providerRouter.get("/:id",getOneController.run.bind(getOneController));
 providerRouter.get("/",getAllController.run.bind(getAllController));

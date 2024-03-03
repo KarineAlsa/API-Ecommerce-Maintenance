@@ -8,7 +8,9 @@ export default class CreatePromotionUseCase {
 
     constructor(readonly repository:PromotionInterface) {}
 
-    async run( { type, value, code,  }: {
+    async run( { name, description,type, value, code,  }: {
+        name: string;
+        description: string;
         type: string;
         value: number; 
         code: string;
@@ -17,6 +19,8 @@ export default class CreatePromotionUseCase {
         try {
 
             let product = new Promotion(
+                name,
+                description,
                 type,
                 value,
                 code,

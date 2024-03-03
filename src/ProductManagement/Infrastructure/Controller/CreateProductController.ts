@@ -14,8 +14,8 @@ export default class RegisterController {
         const cathegory = request.body.cathegory
         const brand = request.body.brand
         const provider_id = request.body.provider_id
-        if (name != "" || price != "" || description != "" || cathegory != "" || brand != "" || provider_id != "" ){
-
+        if (name != "" && price != "" && description != "" && cathegory != "" && brand != "" && provider_id != "" ){
+            console.log(name)
         try {
             
             let product = await this.useCase.run({
