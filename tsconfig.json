@@ -9,7 +9,7 @@
     "outDir": "./dist",         // Carpeta de salida para los archivos compilados
     "rootDir": "./src",         // Carpeta raíz de tu código fuente
     "resolveJsonModule": true,
-    "esModuleInterop": true
+    
   },
   "include": [
     "src/**/*.ts"
