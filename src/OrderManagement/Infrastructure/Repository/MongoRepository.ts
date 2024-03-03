@@ -51,7 +51,7 @@ export default class OrderMongooseRepository implements OrderInterface {
             const result = await collections.name?.insertOne(order);
 
             if (result && result.insertedId) {
-              return {id:result.insertedId,paymentMethod:order.paymentMethod,id_user:order.id_user, products:order.products, total:order.total, status:order.status}
+              return {id:result.insertedId,paymentMethod:order.paymentMethod,id_user:order.id_user, products:order.products, total:order.total, status:order.status, code: order.code_tracking}
               
             } else {
                 throw new Error("Error al insertar la orden en la base de datos");
@@ -116,12 +116,13 @@ export default class OrderMongooseRepository implements OrderInterface {
               return orders.map((order) => new Order(order.paymentMethod,
                 order.id_user,
                 order.products,
-                
+                order.code_promotion,
+
                 order.subtotal,
                 order.costo_envio,
                 order.total,
                 order.code_tracking,
-                order.status,order._id.toHexString()));
+                order.status,order._id));
             } else {
             
               console.error('La consulta a la base de datos no devolvió resultados.');

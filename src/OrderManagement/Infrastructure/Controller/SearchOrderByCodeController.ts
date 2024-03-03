@@ -2,13 +2,14 @@ import { Request, Response } from "express";
 import  SearchOrderByCodeUseCase  from "../../Application/UseCase/SearchOrderByCodeUseCase";
 
 
-export default class DeleteController {
+export default class SearchOrderByCodeController {
 
     constructor(readonly useCase:SearchOrderByCodeUseCase){}
 
     async run(request:Request,response:Response) {
 
-        const code_tracking = request.params.code_tracking
+        const code_tracking = request.body.code_tracking
+        console.log(code_tracking)
         if (code_tracking != ""  ){
 
         try {
@@ -16,6 +17,7 @@ export default class DeleteController {
             let result = await this.useCase.run({
                 code_order:code_tracking
             });
+            console.log(result)
             if (result) {
                 
                 return response.status(200).json({data:result,message:"Orden obtenida",success:true});

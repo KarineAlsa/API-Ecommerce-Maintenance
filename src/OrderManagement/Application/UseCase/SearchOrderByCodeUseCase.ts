@@ -1,7 +1,7 @@
 import { Order } from "../../Domain/Entity/Order";
 import  OrderInterface  from "../../Domain/Port/OrderInterface";
 
-export default class SearchOrderUseCase {
+export default class SearchOrderByCodeUseCase {
 
     constructor(readonly repository:OrderInterface) {}
 
@@ -11,7 +11,7 @@ export default class SearchOrderUseCase {
       } ):Promise<Order|any> {
         try {
 
-            return await this.repository.searchOrder(code_order);
+            return await this.repository.getStatusOrder(code_order);
 
         }catch(error) {
 

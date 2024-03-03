@@ -17,9 +17,10 @@ export default class RegisterController {
         const costo_envio = request.body.costo_envio
         const total = request.body.total
         if (paymentMethod != "" && id_user != "" && products != "" && code_promotion != "" && subtotal != "" && costo_envio != "" && total != ""){
-            console.log(paymentMethod)
+            
         try {
             if(await this.payment.pay(total,"mxn")){
+                console.log(paymentMethod)
             let order = await this.useCase.run({
                 paymentMethod: paymentMethod,
                 id_user: id_user,

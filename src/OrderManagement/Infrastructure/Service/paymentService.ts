@@ -3,7 +3,7 @@ import PaymentMethodService from "../../Domain/Port/PaymentInterface";
 import dotenv from 'dotenv';
 dotenv.config();
 
-const secret = process.env.STRIPE_SECRET_KEY;
+const secret = "sk_test_51Oq5wGCvwnlH1kxU6opunotgxGYBByyjogacrmO48NAzyTwMh7AziOExMfSDcw1ZGnEkUbNlTMIWdSnh5EmD1Kp600zyn4eWK3";
 const stripe = new Stripe(secret!, {
     apiVersion: '2023-10-16',
 });
@@ -19,7 +19,8 @@ export default class PaymentMethodStripeService implements PaymentMethodService 
 
             await stripe.paymentIntents.cancel(paymentIntent.id);
             return true;
-        }catch(e){
+        }catch(e:any){
+            console.log(e)
             return false;
         }
     }
