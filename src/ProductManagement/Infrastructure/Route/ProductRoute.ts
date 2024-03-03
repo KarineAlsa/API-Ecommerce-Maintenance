@@ -11,7 +11,7 @@ import { getAllProductsByBrandController } from "../Dependencies";
 const productRouter = express.Router();
 
 
-productRouter.post("/add",createProductController.run.bind(createProductController));
+productRouter.post("/",createProductController.run.bind(createProductController));
 
 productRouter.get("/:id",searchProductController.run.bind(searchProductController));
 
