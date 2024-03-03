@@ -9,7 +9,6 @@ export default class SearchOrderByCodeController {
     async run(request:Request,response:Response) {
 
         const code_tracking = request.body.code_tracking
-        console.log(code_tracking)
         if (code_tracking != ""  ){
 
         try {
@@ -24,7 +23,7 @@ export default class SearchOrderByCodeController {
             } else {
                 response.status(400).send({
                     data: "No data",
-                    message: "No se pudo encontrar la orden",
+                    message: "No se pudo encontrar la orden por codigo",
                     success: false,
                 });
             }

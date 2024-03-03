@@ -12,6 +12,8 @@ const orderRouter = express.Router();
 
 orderRouter.post("/",createOrderController.run.bind(createOrderController));
 
+orderRouter.get("/status",getOrderByCodeController.run.bind(getOrderByCodeController));
+
 orderRouter.get("/:id",searchOrderController.run.bind(searchOrderController));
 
 orderRouter.get("/",getAllOrdersController.run.bind(getAllOrdersController));
@@ -20,7 +22,7 @@ orderRouter.delete("/:id",deleteOrderController.run.bind(deleteOrderController))
 
 orderRouter.put("/:id",updateOrderController.run.bind(updateOrderController));
 
-orderRouter.get("/status",getOrderByCodeController.run.bind(getOrderByCodeController));
+
 
 
 

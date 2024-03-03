@@ -6,5 +6,5 @@ export default interface OrderInterface {
     deleteOrder(id:string):Promise<Order|any>;
     listAllOrders():Promise<Order[]|any>;
     updateOrder(id:string,updateFields:any):Promise<Order|any>;
-    getStatusOrder(code_order:string):Promise<Order[]|any>;
+    getStatusOrder(code_order:string):Promise<Order|any>;
 }

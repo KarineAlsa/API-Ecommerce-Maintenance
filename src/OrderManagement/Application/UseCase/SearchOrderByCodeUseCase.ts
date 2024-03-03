@@ -10,7 +10,7 @@ export default class SearchOrderByCodeUseCase {
         
       } ):Promise<Order|any> {
         try {
-
+            
             return await this.repository.getStatusOrder(code_order);
 
         }catch(error) {

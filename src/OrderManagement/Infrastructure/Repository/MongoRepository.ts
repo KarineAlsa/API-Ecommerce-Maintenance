@@ -28,7 +28,7 @@ export default class OrderMongooseRepository implements OrderInterface {
         try {
             const collectionName = "orders"
             await connectToDatabase(collectionName);
-           
+
             const query = { code_tracking: code_order };
     
             const order = await collections.name?.findOne(query);
@@ -37,7 +37,7 @@ export default class OrderMongooseRepository implements OrderInterface {
                 return {status:order.status}
                 
             } else {
-                throw new Error("Error al encontrar la orden en la base de datos");
+                throw new Error("Error al encontrar la orden por codigo en la base de datos");
             }
         }catch (error) {
             throw new Error(`Error en la operación de búsqueda`);
