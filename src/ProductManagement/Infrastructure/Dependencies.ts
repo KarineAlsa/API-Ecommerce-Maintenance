@@ -19,7 +19,7 @@ import GetAllProductsByBrandController from './Controller/GetAllProductsByBrandC
 
 export const productMongooseRepository = new ProductMongooseRepository();
 export const productMySqlRepository = new ProductMySQLRepository();
-export const currentRepository =  productMySqlRepository
+export const currentRepository =  productMongooseRepository
 
 export const createProductUseCase = new CreateProductUseCase(currentRepository);
 export const searchProductUseCase = new SearchProductUseCase(currentRepository);

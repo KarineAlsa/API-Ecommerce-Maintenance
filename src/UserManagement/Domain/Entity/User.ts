@@ -23,6 +23,7 @@ export class User {
         this.email = email;
         this.password = password;
         this.type = type;
+        this.id = id;
     }
 
 }

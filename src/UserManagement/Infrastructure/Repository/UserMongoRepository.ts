@@ -142,7 +142,7 @@ import bcrypt from 'bcrypt'
         
         if (users) {
           
-          return users.map((user) => new User(user.name, user.lastName, user.email, user.type, user._id.toHexString()));
+          return users.map((user) => new User(user.name, user.lastName, user.email,"", user.type, user._id));
         } else {
         
           console.error('La consulta a la base de datos no devolvió resultados.');
