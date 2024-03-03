@@ -4,7 +4,7 @@ import { ObjectId } from 'mongodb';
 export class Order {
 
     public paymentMethod:string;
-    public id_user:number;
+    public id_user:any;
     public products:Array<any>;
     public code_promotion:string;
     public subtotal:number;

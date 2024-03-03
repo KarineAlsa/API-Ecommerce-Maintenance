@@ -4,6 +4,7 @@ import DeleteOrderUseCase from "../Application/UseCase/DeleteOrderUseCase";
 import GetAllOrdersUseCase from "../Application/UseCase/GetAllOrdersUseCase";
 import UpdateOrderUseCase from "../Application/UseCase/UpdateOrderUseCase";
 import GetOrderByCodeUseCase from "../Application/UseCase/SearchOrderByCodeUseCase";
+import {getOneUserCase} from "../../UserManagement/Infrastructure/Dependencies";
 
 import PaymentMethodStripeService from "./Service/paymentService";
 
@@ -16,7 +17,9 @@ import DeleteOrderController from './Controller/DeleteOrderController'
 import GetAllOrdersController from './Controller/GetAllOrdersController'
 import UpdateOrderController from './Controller/UpdateOrderController'
 import GetOrderByCodeController from './Controller/SearchOrderByCodeController'
+import { NodemailerEmailService } from "./Service/Email";
 
+export const nodemailerEmailService = new NodemailerEmailService();
 
 export const orderMongooseRepository = new OrderMongooseRepository();
 
@@ -34,5 +37,5 @@ export const createOrderController = new CreateOrderController(createOrderUseCas
 export const searchOrderController = new SearchOrderController(searchOrderUseCase);
 export const deleteOrderController = new DeleteOrderController(deleteOrderUseCase);
 export const getAllOrdersController = new GetAllOrdersController(getAllOrdersUseCase);
-export const updateOrderController = new UpdateOrderController(updateOrderUseCase);
+export const updateOrderController = new UpdateOrderController(updateOrderUseCase, nodemailerEmailService, getOneUserCase);
 export const getOrderByCodeController = new GetOrderByCodeController(getOrderByCodeUseCase);

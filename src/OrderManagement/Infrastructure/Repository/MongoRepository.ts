@@ -12,16 +12,18 @@ export default class OrderMongooseRepository implements OrderInterface {
             const collectionName = "orders"
             await connectToDatabase(collectionName);
             
-            const pudate = updateFields
             const query = { _id: new ObjectId(id) };
             
-            const order = await collections.name?.updateOne(query, { $set: pudate });
             
-            if (order) {
-                return true
+            const updatedOrder = await collections.name?.findOneAndUpdate(query, { $set: updateFields }, { returnDocument: 'after' });
+            console.log(updatedOrder);
+            if (updatedOrder) {
+                
+                
+                return updatedOrder;
             }
         } catch (error) {
-            return "No se encontró con el id"
+            return false
         }
     }
     async getStatusOrder(code_order: string): Promise<any> {
