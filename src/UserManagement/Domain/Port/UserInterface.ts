@@ -9,4 +9,5 @@ export default interface UserInterface {
     delete(id:string):Promise<User|any>;
     listAll():Promise<User[]|any>;
     updateUser(id:string,updateFields:any):Promise<User|any>;
+    getOrdersByUserId(id:string):Promise<any>;
 }

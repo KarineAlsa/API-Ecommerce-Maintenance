@@ -4,6 +4,9 @@ import bcrypt, { hashSync } from 'bcrypt'
 import query from "../../../Database/mysql";
 
 export default class UserMysqlRepository implements UserInterface {
+  getOrdersByUserId(id: string): Promise<any> {
+    throw new Error("Method not implemented.");
+  }
   async updateUser(id: string, updateFields:any): Promise<any> {
     let updateQuery = "UPDATE users SET ";
     const params: any[] = [];

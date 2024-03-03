@@ -5,8 +5,35 @@ import { connectToDatabase } from '../../../Database/mongo';
 import { collections } from "../../../Database/mongo";
 import { ObjectId } from 'mongodb';
 import bcrypt from 'bcrypt'
+import { Order } from "../../../OrderManagement/Domain/Entity/Order";
 
   export default class UserMongooseRepository implements UserInterface {
+    async getOrdersByUserId(id: string): Promise<any> {
+      try {
+        const collectionName = "orders"
+        await connectToDatabase(collectionName);
+        const orders = (await collections.name?.find({id_user: id}).toArray());
+        
+        if (orders) {
+          
+          return orders.map((order) => new Order(order.paymentMethod,
+            order.id_user,
+            order.products,
+            order.code_promotion,
+            order.subtotal,
+            order.costo_envio,
+            order.total,
+            order.code_tracking,
+            order.status,order._id))
+        
+          console.error('La consulta a la base de datos no devolvió resultados.');
+          return 'Ocurrió un error';
+        }
+      } catch (error) {
+        console.error(error);
+        return 'Ocurrió un error';
+      }
+    }
     async updateUser(id:string,updateFields:any): Promise<any> {
       try {
         

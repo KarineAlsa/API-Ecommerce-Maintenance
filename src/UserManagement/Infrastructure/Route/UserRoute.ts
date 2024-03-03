@@ -5,12 +5,14 @@ import { deleteController } from "../Dependencies";
 import { getOneController } from "../Dependencies";
 import { getAllController } from "../Dependencies";
 import { updateUserController } from "../Dependencies";
+import { getOrdersOfUsercontroller } from "../Dependencies";
 
 const userRouter = express.Router();
 
 
 userRouter.post("/register",registerController.run.bind(registerController));
 userRouter.post("/login", loginController.run.bind(loginController));
+userRouter.get("/:id/orders", getOrdersOfUsercontroller.run.bind(getOrdersOfUsercontroller));
 userRouter.delete("/:id",deleteController.run.bind(deleteController));
 userRouter.get("/:id",getOneController.run.bind(getOneController));
 userRouter.get("/",getAllController.run.bind(getAllController));
