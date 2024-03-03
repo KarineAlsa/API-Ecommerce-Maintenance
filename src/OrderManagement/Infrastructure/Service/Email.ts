@@ -18,7 +18,7 @@ export class NodemailerEmailService {
         } as TransportOptions;
         
         this.transporter = nodemailer.createTransport(config);
-        console.log(this.transporter)
+        
     }
 
     async sendEmail(to: string, subject: string, body: string): Promise<void> {
@@ -30,7 +30,7 @@ export class NodemailerEmailService {
             subject,
             text: body 
         });
-        console.log(info)
+        
         
     }
 }
